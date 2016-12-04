@@ -214,7 +214,7 @@
 				scheduleItem += '</div>';
 			}
 		});
-		$('#hiddenresult').append(scheduleItem)
+		$('#hiddenresult').empty().append(scheduleItem);
 		$('.schedule').css('visibility', 'visible');
 		$('#schedule_submit').css('visibility', 'visible');
         initPagination();
