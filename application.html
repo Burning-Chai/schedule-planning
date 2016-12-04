@@ -169,8 +169,7 @@
 			}
 		];
 
-		console.log(data);
-    	var scheduleItem = ""
+		var scheduleItem = "";
 		data.forEach(function(element) {
 			scheduleItem += '<div class="schedule_item">';
 			scheduleItem += '<h2>' + element.name + '</h2>';
@@ -190,10 +189,9 @@
 			scheduleItem += '</table>';
 			scheduleItem += '</div>';
 		});
-		$('.schedule_list').append(scheduleItem)
+		$('.schedule_list').empty().append(scheduleItem);
 		$('.schedule').css('visibility', 'visible');
 		$('#schedule_submit').css('visibility', 'visible');
-		console.log(scheduleItem);
 
     // 	$.ajax({
     // 		url:"data.json",
