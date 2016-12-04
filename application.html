@@ -68,6 +68,33 @@
 	  		</div>
   		</div>
 	  </div>
+
+	  <!--登録完了モーダル-->
+	  <div class="row">
+		  <div class="modal fade" id="complete_modal" tabindex="-1" role="dialog" aria-labelledby="complete_modal_label">
+			  <div class="modal-dialog" role="document">
+				  <div class="modal-content">
+					  <!--モーダル内のヘッダー-->
+					  <div class="modal-header">
+						  登録完了
+					  </div>
+
+					  <!--モーダル内コンテンツ-->
+					  <div class="modal-body">
+						  <h2>Have a nice holiday!</h2>
+					  </div>
+
+					  <!--モーダル内フッター-->
+					  <div class="modal-footer">
+						  <!--閉じるボタン-->
+						  <button type="button" class="btn btn-default" data-dismiss="modal">閉じる</button>
+					  </div>
+				  </div>
+			  </div>
+		  </div>
+	  </div>
+	  <!--ここまで-->
+
   </div>
 
 
@@ -166,7 +193,13 @@
     // 			console.log(data);
     // 		}
     // 	})
-    })
+    });
+
+	// 登録ボタンを押したときのイベントを設定する
+	$("#submit_button").click(function(){
+		// 登録完了モーダル表示
+		$("#complete_modal").modal("show");
+	});
   } );
   </script>
 
