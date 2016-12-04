@@ -5,6 +5,9 @@
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
     <link rel="stylesheet" href="application.css">
+
+	<!--フォント取り込み-->
+	<link href="https://fonts.googleapis.com/css?family=Oleo+Script" rel="stylesheet">
     <link href="css/pagination.css" rel="stylesheet" media="all" type="text/css" />
     <title>リア充計画</title>
   </head>
@@ -73,6 +76,38 @@
 	  		</div>
   		</div>
 	  </div>
+
+	  <!--登録完了モーダル-->
+	  <div class="row">
+		  <div class="modal fade" id="complete_modal" tabindex="-1" role="dialog" aria-labelledby="complete_modal_label">
+			  <div class="modal-dialog" role="document">
+				  <div class="modal-content">
+					  <!--モーダル内のヘッダー-->
+					  <div class="modal-header">
+						  登録完了
+					  </div>
+
+					  <!--モーダル内コンテンツ-->
+					  <div class="modal-body">
+						  <div>
+						  	<h1 style="font-family: 'Oleo Script', cursive;text-align:center;">Have a nice holiday!</h2>
+						  </div>
+						  <div>
+							  <img src="./snowman.jpg" style="width: 100%;" />
+						  </div>
+					  </div>
+
+					  <!--モーダル内フッター-->
+					  <div class="modal-footer">
+						  <!--閉じるボタン-->
+						  <button type="button" class="btn btn-default" data-dismiss="modal">閉じる</button>
+					  </div>
+				  </div>
+			  </div>
+		  </div>
+	  </div>
+	  <!--ここまで-->
+
   </div>
 
 
@@ -153,11 +188,10 @@
 			}
 		];
 
-		console.log(data);
     	var scheduleItem = ""
 		data.forEach(function(element, index) {
 			if((index %2)== 0){
-				scheduleItem += '<div class="result">';				
+				scheduleItem += '<div class="result">';
 			}
 			scheduleItem += '<div class="schedule_item">';
 			scheduleItem += '<h2>' + element.name + '</h2>';
@@ -183,7 +217,6 @@
 		$('#hiddenresult').append(scheduleItem)
 		$('.schedule').css('visibility', 'visible');
 		$('#schedule_submit').css('visibility', 'visible');
-		console.log(scheduleItem);
         initPagination();
 
     // 	$.ajax({
@@ -192,7 +225,13 @@
     // 			console.log(data);
     // 		}
     // 	})
-    })
+    });
+
+	// 登録ボタンを押したときのイベントを設定する
+	$("#submit_button").click(function(){
+		// 登録完了モーダル表示
+		$("#complete_modal").modal("show");
+	});
   } );
   </script>
 
