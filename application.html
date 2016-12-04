@@ -5,11 +5,13 @@
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
     <link rel="stylesheet" href="application.css">
+    <link href="css/pagination.css" rel="stylesheet" media="all" type="text/css" />
     <title>リア充計画</title>
   </head>
   <body>
   <div class="container">
   	<h1>リア充計画</h1>
+
 	  <div class="row">
 		  <div class="search_box col-md-offset-2 col-md-8">
 			  <div class="search_item">
@@ -60,7 +62,10 @@
 	  </div>
 	  <div class="row">
 	  	<div class="schedule col-md-offset-2 col-md-8">
-	  		<div class="schedule_list">
+	  		<div id="Searchresult"><!-- ここにコンテンツを表示 --></div>
+	  		<div id="hiddenresult" style="display: none;"><!-- ここはスケジュールリスト --></div>
+	  		<div class="text-center">
+	  			<div class="Pagination pagination clearfix"><!-- ここにページネーションを表示 --></div>
 	  		</div>
 	  		<div class="text-center" id="schedule_submit">
 				<button class="btn btn-default" id="submit_button">登録する</button>
@@ -80,8 +85,22 @@
   integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU="
   crossorigin="anonymous"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+  <script type="text/javascript" src="js/jquery.pagination.js"></script>
 
   <script>
+    function pageselectCallback(page_index, jq){
+      var new_content = jQuery('#hiddenresult div.result:eq('+page_index+')').clone();
+      $('#Searchresult').empty().append(new_content);
+      return false;
+    }
+    function initPagination() {
+        var num_entries = jQuery('#hiddenresult div.result').length;
+        $(".Pagination").pagination(num_entries, {
+            callback: pageselectCallback,
+            items_per_page:1,
+        });
+    }
+
   $( function() {
     $( "#datepicker-from" ).datepicker();
     $( "#datepicker-to" ).datepicker();
@@ -136,7 +155,10 @@
 
 		console.log(data);
     	var scheduleItem = ""
-		data.forEach(function(element) {
+		data.forEach(function(element, index) {
+			if((index %2)== 0){
+				scheduleItem += '<div class="result">';				
+			}
 			scheduleItem += '<div class="schedule_item">';
 			scheduleItem += '<h2>' + element.name + '</h2>';
 			scheduleItem += '<table class="table table-borderd">';
@@ -154,11 +176,15 @@
 			scheduleItem += '</tr>';
 			scheduleItem += '</table>';
 			scheduleItem += '</div>';
+			if((index %2) == 1){
+				scheduleItem += '</div>';
+			}
 		});
-		$('.schedule_list').append(scheduleItem)
+		$('#hiddenresult').append(scheduleItem)
 		$('.schedule').css('visibility', 'visible');
 		$('#schedule_submit').css('visibility', 'visible');
 		console.log(scheduleItem);
+        initPagination();
 
     // 	$.ajax({
     // 		url:"data.json",
@@ -169,8 +195,6 @@
     })
   } );
   </script>
-
-
 
   </body>
 
