@@ -1,0 +1,10 @@
+.search_box {
+	border: 1px solid #dddddd;
+	padding: 15px;
+	margin-top: 20px;
+}
+
+.search_item {
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
