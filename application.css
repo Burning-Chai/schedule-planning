@@ -8,3 +8,9 @@
 	margin-top: 10px;
 	margin-bottom: 10px;
 }
+
+.schedule_list {
+	border: 1px solid #dddddd;
+	padding: 15px;
+	margin-top: 20px;
+}

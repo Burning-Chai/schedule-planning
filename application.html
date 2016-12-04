@@ -53,9 +53,13 @@
 			  <input type="checkbox"/>その他
 		  </div>
 		  <div class="text-center">
-				<button class="btn btn-default">プランニング</button>
+				<button class="btn btn-default" id="search_button">プランニング</button>
 		  </div>
 		  </div>
+	  </div>
+
+	  <div class="row">
+	  	<div class="schedule_list col-md-offset-2 col-md-8">
 	  </div>
   </div>
 
@@ -68,13 +72,75 @@
   src="http://code.jquery.com/ui/1.12.1/jquery-ui.min.js"
   integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU="
   crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
   <script>
   $( function() {
     $( "#datepicker-from" ).datepicker();
     $( "#datepicker-to" ).datepicker();
+    $( "#search_button").click(function() {
+    	var data = [
+		  {
+		    "name": "「第九と皇帝」",
+		    "location": "サントリーホール 大ホール",
+		    "date": "2016/12/15",
+		    "start": "18:30",
+		    "end": "22:00",
+		    "fee": 10000,
+		    "HP": "http://sort.eplus.jp/sys/T1U14P0010163P0108P002000504P0050001P006001P0030023"
+		  },
+		  {
+		    "name": "東京ドイツ村イルミネーション",
+		    "location": "千葉県袖ケ浦市永吉419",
+		    "date": "2016/12/24",
+		    "start": "18:00",
+		    "end": "19:00",
+		    "fee": 0,
+		    "HP": "http://www.t-doitsumura.co.jp/special_event/"
+		  }
+    	];
+    	console.log(data);
+    	var scheduleItem = ""
+		data.forEach(function(element) {
+			scheduleItem += '<div class="schedule_item">';
+			scheduleItem += '<div class="text-right">';
+			scheduleItem += "イベント日時";
+			scheduleItem += element.date;
+			scheduleItem += element.start;
+			scheduleItem += "〜";
+			scheduleItem += element.end;
+			scheduleItem += '</div>';
+			scheduleItem += '<div><h2>';
+    		scheduleItem += element.name;
+    		scheduleItem += '</h2></div>';
+    		scheduleItem += '<div>';
+    		scheduleItem += "地域: ";
+    		scheduleItem += element.location;
+    		scheduleItem += '</div>';
+    		scheduleItem += '<div>';
+    		scheduleItem += "料金: ";
+    		scheduleItem += element.fee;
+    		scheduleItem += '</div>';
+    		scheduleItem += '<div>';
+    		scheduleItem += '<a href="';
+    		scheduleItem += element.HP;
+    		scheduleItem += '">';
+    		scheduleItem += element.HP;
+    		scheduleItem += '</a></div>';
+    		scheduleItem += '</div>';
+    		scheduleItem += '</div>';
+		    console.log(scheduleItem);
+		});
+		$('.schedule_list').append(scheduleItem)
+    // 	$.ajax({
+    // 		url:"data.json",
+    // 		success: function(data){
+    // 			console.log(data);
+    // 		}
+    // 	})
+    })
   } );
   </script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
 
 
