@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <title>スケジュール</title>
+  </head>
+  <body>
+  <div>
+	  <label>場所</label>
+	  <br>
+	  <input type="checkbox"/>北海道
+	  <input type="checkbox"/>東北
+	  <input type="checkbox"/>関東
+	  <input type="checkbox"/>中部
+	  <input type="checkbox"/>関西
+	  <input type="checkbox"/>山陰・山陽
+	  <input type="checkbox"/>四国
+	  <input type="checkbox"/>九州
+	  <input type="checkbox"/>沖縄
+  </div>
+  <div>
+	  <label>金額</label>
+	  <br>
+	  <select>
+	  	<option>〜5000円</option>
+	  	<option>〜10000円</option>
+	  	<option>〜15000円</option>
+	  	<option>〜20000円</option>
+	  	<option>〜25000円</option>
+	  	<option>〜30000円</option>
+	  	<option>30000円以上</option>
+	  </select>
+  </div>
+  <div>
+	  <label>日付</label>
+	  <br>
+	  <p>開始日: <input type="text" id="datepicker-from"></p>
+	  <p>終了日: <input type="text" id="datepicker-to"></p>
+  </div>
+  <div>
+	  <label>ジャンル</label>
+	  <br>
+	  <input type="checkbox"/>遊ぶ
+	  <input type="checkbox"/>学ぶ
+	  <input type="checkbox"/>鍛える
+	  <input type="checkbox"/>癒やす
+	  <input type="checkbox"/>その他
+  </div>
+  <button>プランニング</button>
+
+  <script
+  src="https://code.jquery.com/jquery-3.1.1.min.js"
+  integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+  crossorigin="anonymous"></script>
+  <script
+  src="http://code.jquery.com/ui/1.12.1/jquery-ui.min.js"
+  integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU="
+  crossorigin="anonymous"></script>
+  <script>
+  $( function() {
+    $( "#datepicker-from" ).datepicker();
+    $( "#datepicker-to" ).datepicker();
+  } );
+  </script>
+
+
+
+  </body>
+
+</html>
