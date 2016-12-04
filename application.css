@@ -1,3 +1,8 @@
+h1 {
+	padding-bottom: .5em;
+	border-bottom: 1px solid #ccc;
+}
+
 .search_box {
 	border: 1px solid #dddddd;
 	padding: 15px;
@@ -9,8 +14,27 @@
 	margin-bottom: 10px;
 }
 
-.schedule_list {
+.schedule {
+	visibility: hidden;
 	border: 1px solid #dddddd;
 	padding: 15px;
+	margin-top: 20px;	
+	margin-bottom: 20px;
+}
+
+.schedule_list {
+	padding: 15px;
 	margin-top: 20px;
+	margin-bottom: 20px;
+}
+
+.schedule_item {
+	border: 1px solid #dddddd;
+	padding: 5px;
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
+
+#schedule_submit {
+	visibility: hidden;
 }
